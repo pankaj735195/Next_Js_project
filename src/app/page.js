@@ -1,101 +1,124 @@
-import Image from "next/image";
+import React from 'react';
+import { Box, Container, TextField, Typography, Avatar, InputAdornment, IconButton } from '@mui/material';
+import SearchIcon from '@mui/icons-material/Search';
+import ResponsiveCard from '@/components/ResponsiveCard';
 
-export default function Home() {
+const Home = () => {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.js
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+    <Container maxWidth="xl">
+      {/* Header Section */}
+      <Box
+        display="flex"
+        justifyContent="space-between"
+        alignItems="center"
+        border="1px solid green"
+        padding={2}
+        mb={4}
+        sx={{
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          border: '1px solid green',
+          padding: 2,
+          mb: 4,
+          borderRadius: '8px',
+          backgroundColor: 'background.paper',
+          '@media (max-width: 600px)': {
+            padding: 1,
+          },
+        }}
+      >
+        {/* Brand Name */}
+        <Typography
+          variant="h6"
+          component="h1"
+          color="primary"
+          sx={{
+            transition: 'transform 0.2s ease',
+            '&:hover': {
+              transform: 'scale(1.05)',
+            },
+          }}
+        >
+          Brand Name
+        </Typography>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+        {/* Search Bar */}
+        <Box
+          sx={{
+            display: { xs: 'none', sm: 'flex' },
+            flexGrow: 1,
+            mx: 2,
+          }}
+        >
+          <TextField
+            variant="outlined"
+            placeholder="Search..."
+            fullWidth
+            InputProps={{
+              endAdornment: (
+                <InputAdornment position="end">
+                  <IconButton sx={{ color: 'text.primary' }}>
+                    <SearchIcon />
+                  </IconButton>
+                </InputAdornment>
+              ),
+            }}
+            sx={{
+              '& .MuiOutlinedInput-root': {
+                backgroundColor: 'background.paper',
+              },
+              '& .MuiInputBase-input': {
+                color: 'text.primary',
+              },
+            }}
+          />
+        </Box>
+
+        {/* User Profile */}
+        <Box display="flex" alignItems="center" gap={1}>
+          <Avatar
+            sx={{
+              bgcolor: 'blue',
+              transition: 'transform 0.2s ease',
+              '&:hover': {
+                transform: 'scale(1.05)',
+              },
+            }}
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+            J
+          </Avatar>
+          <Typography
+            variant="body1"
+            sx={{ display: { xs: 'none', sm: 'block' }, color: 'text.primary' }}
           >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+            John
+          </Typography>
+        </Box>
+      </Box>
+
+      {/* Card Section */}
+      <Box
+        display="flex"
+        flexDirection={{ xs: 'column', sm: 'row' }}
+        flexWrap="wrap"
+        gap={2}
+      >
+        <ResponsiveCard title="Card 1" description="Discover the power of simplicity with Card 1." />
+        <ResponsiveCard title="Card 2" description="Unleash creativity with the dynamic features of Card 2." />
+        <ResponsiveCard title="Card 3" description="Card 3 offers seamless functionality at your fingertips." />
+        <ResponsiveCard title="Card 4" description="Dive into the world of innovation with Card 4." />
+        <ResponsiveCard title="Card 5" description="Experience next-level design with Card 5." />
+        <ResponsiveCard title="Card 6" description="Card 6: Built for speed and efficiency." />
+        <ResponsiveCard title="Card 7" description="Explore endless possibilities with Card 7." />
+        <ResponsiveCard title="Card 8" description="Card 8 combines elegance with practicality." />
+        <ResponsiveCard title="Card 9" description="Your journey to excellence starts with Card 9." />
+        <ResponsiveCard title="Card 10" description="Card 10 redefines how you achieve success." />
+        <ResponsiveCard title="Card 11" description="Innovation meets style in Card 11." />
+        <ResponsiveCard title="Card 12" description="Card 12 is your gateway to a brighter future." />
+      </Box>
+    </Container>
   );
-}
+};
+
+export default Home;
